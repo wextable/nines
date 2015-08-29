@@ -1,15 +1,16 @@
 //
-//  ViewController.h
+//  Models.h
 //  Nines
 //
 //  Created by Wesley St. John on 8/12/15.
 //  Copyright (c) 2015 WarEagles. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#ifndef Nines_Models_h
+#define Nines_Models_h
 
-@interface ViewController : UIViewController
+#import "Card.h"
+#import "Player.h"
+#import "Game.h"
 
-
-@end
-
+#endif
