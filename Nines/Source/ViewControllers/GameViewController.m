@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, HandTableViewSecion) {
 };
 
 @interface GameViewController () <UITableViewDataSource, UITableViewDelegate>
-
+@property (nonatomic, strong) Game *game;
 @end
 
 @implementation GameViewController
@@ -32,15 +32,27 @@ typedef NS_ENUM(NSInteger, HandTableViewSecion) {
     Game *game = [[Game alloc] initWithStubPlayer];
     [game dealGame];
     [game debug_putThreeCardsFaceDown];
+    self.game = game;
     NSLog(@"STATE OF THE GAME = \n %@", game);
+
     
     self.myPlayer = [game.players firstObject];
     self.myPlayerState = 1; //MyPlayerStateSelectUpCards;
     
-    
+    [self updateUI];
 }
 
-#pragma MyPlayerState
+#pragma mark - UpdateUI
+// TODO: refactor game/player arrays to conform to KVO so we just update the model, and we listen for changes to updat the UI, rather than explicitly calling updateUI
+- (void)updateUI {
+    [self.tableView reloadData];
+    self.lblDeckCardsLeft.text = [NSString stringWithFormat:@"%ld cards left", self.game.deckCards.count];
+    self.lblStackCardsLeft.text = [NSString stringWithFormat:@"%ld cards", self.game.stackCards.count];
+    Card *topCard = [self.game topStackCard];
+    self.lblStackCard.text = [topCard fullName];
+}
+
+#pragma mark - MyPlayerState
 
 -(void)setMyPlayerState:(MyPlayerState)myPlayerState {
 
@@ -55,13 +67,39 @@ typedef NS_ENUM(NSInteger, HandTableViewSecion) {
             self.lblInstructions.text = @"Select your up cards, dude.";
             break;
         
-        case MyPlayerStateMyTurn:
-            self.lblInstructions.text = @"Your turn, dude.";
+        case MyPlayerStateDraw:
+            self.lblInstructions.text = @"Draw a card, dude.";
+            break;
+            
+        case MyPlayerStatePlay:
+            self.lblInstructions.text = @"Your roll.";
             break;
     }
 
 }
 
+#pragma mark - Actions
+
+- (IBAction)deckTapped:(id)sender {
+ 
+    if (self.myPlayerState == MyPlayerStateDraw) {
+        [self.game drawCardForPlayer:self.myPlayer];
+        [self updateUI];
+        
+        if (self.myPlayer.handCards.count > 3 || self.game.deckCards.count == 0) {
+            self.myPlayerState = MyPlayerStatePlay;
+        }
+        
+    }
+}
+
+- (IBAction)stackTapped:(id)sender {
+    if (self.myPlayerState == MyPlayerStatePlay) {
+        [self.game pickUpStackForPlayer:self.myPlayer];
+        [self updateUI];
+        
+    }
+}
 
 #pragma mark - UITableView
 
@@ -168,18 +206,36 @@ typedef NS_ENUM(NSInteger, HandTableViewSecion) {
                 Card *card = self.myPlayer.handCards[indexPath.row];
                 [self.myPlayer moveCard:card fromPlayerHandSection:PlayerHandSectionHand toPlayerHandSection:PlayerHandSectionUp];
                 
-                [tableView reloadData];
+                [self updateUI];
                 
                 if (self.myPlayer.upCards.count == 3) {
-                    self.myPlayerState = MyPlayerStateNotMyTurn;
+                    self.myPlayerState = MyPlayerStateDraw;
                 }
                 
             }
             break;
             
-        case MyPlayerStateMyTurn:
+        case MyPlayerStateDraw:
             return;
             break;
+    
+        case MyPlayerStatePlay:
+            if (indexPath.section == HandTableViewSecionHandCards) {
+                Card *card = self.myPlayer.handCards[indexPath.row];
+                
+                if (card.playValue >= [self.game topStackCard].playOnValue) {
+                    [self.game playCard:card forPlayer:self.myPlayer];
+                    [self updateUI];
+                    
+                    if (self.myPlayer.handCards.count <= 3 && self.game.deckCards.count > 0) {
+                        self.myPlayerState = MyPlayerStateDraw;
+                    }
+                }
+                
+            }
+            return;
+        break;
+    
     }
     
     

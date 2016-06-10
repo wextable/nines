@@ -18,10 +18,18 @@
     
     // A's 2's and 10's are worth 14
     if (faceValue == 1 || faceValue == 2 || faceValue == 10) {
-        self.value = 14;
+        self.playValue = 14;
+        
+        if (faceValue == 2) {
+            self.playOnValue = 2;
+        } else {
+            self.playOnValue = self.playValue;
+        }
+        
     } else {
         // otherwise they are worth face value
-        self.value = faceValue;
+        self.playValue = faceValue;
+        self.playOnValue = faceValue;
     }
     
     if (faceValue == 1) {
@@ -71,10 +79,10 @@
 
 
 - (NSComparisonResult)compare:(Card *)otherCard {
-    if (self.value > otherCard.value) {
+    if (self.playValue > otherCard.playOnValue) {
         return NSOrderedAscending;
     }
-    if (self.value < otherCard.value) {
+    if (self.playValue < otherCard.playOnValue) {
         return NSOrderedDescending;
     }
     if (self.suit < otherCard.suit) {

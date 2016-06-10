@@ -29,6 +29,11 @@
     return self;
 }
 
+- (Card *)topStackCard {
+    return [self.stackCards lastObject];
+}
+
+
 #pragma mark - Moving Cards
 
 - (void)dealGame {    
@@ -50,6 +55,23 @@
     
     return topCard;
 }
+
+- (void)drawCardForPlayer:(Player *)player {
+    
+    Card *drawnCard = [self drawCardFromDeck];
+    [player.handCards addObject:drawnCard];
+}
+
+- (void)playCard:(Card *)card forPlayer:(Player *)player {
+    [self.stackCards addObject:card];
+    [player.handCards removeObject:card];
+}
+
+- (void)pickUpStackForPlayer:(Player *)player {
+    [player.handCards addObjectsFromArray:self.stackCards];
+    [self.stackCards removeAllObjects];
+}
+
 
 - (void)debug_putThreeCardsFaceDown {
     for (Player *player in self.players) {

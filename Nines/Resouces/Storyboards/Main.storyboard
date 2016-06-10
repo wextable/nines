@@ -55,25 +55,111 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5In-Jo-1gT">
                                 <rect key="frame" x="10" y="30" width="300" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4f-QU-z8D" userLabel="DeckView">
+                                <rect key="frame" x="10" y="103" width="125" height="125"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DECK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8R-Yn-p7S">
+                                        <rect key="frame" x="39" y="15" width="46.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 cards left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asb-V9-o2a">
+                                        <rect key="frame" x="20" y="92" width="85" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="l8R-Yn-p7S" firstAttribute="top" secondItem="R4f-QU-z8D" secondAttribute="top" constant="15" id="Imi-Og-Cep"/>
+                                    <constraint firstAttribute="centerX" secondItem="asb-V9-o2a" secondAttribute="centerX" id="QGh-AE-pRp"/>
+                                    <constraint firstAttribute="centerX" secondItem="l8R-Yn-p7S" secondAttribute="centerX" id="Ucn-qx-EcX"/>
+                                    <constraint firstAttribute="bottom" secondItem="asb-V9-o2a" secondAttribute="bottom" constant="15" id="lXz-lE-JLV"/>
+                                    <constraint firstAttribute="width" constant="125" id="qsr-rz-j2Z"/>
+                                    <constraint firstAttribute="height" constant="125" id="sXz-Bp-W4n"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cFI-D1-CPO" appends="YES" id="pTp-YS-6nK"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbP-eH-bte" userLabel="StackView">
+                                <rect key="frame" x="185" y="103" width="125" height="125"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STACK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg5-X2-z9w" userLabel="I">
+                                        <rect key="frame" x="35" y="15" width="54.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWy-SU-zsI">
+                                        <rect key="frame" x="37" y="92" width="51" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 of Clubs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7o-sl-jJt">
+                                        <rect key="frame" x="20" y="52" width="84.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="kg5-X2-z9w" secondAttribute="centerX" id="14g-nc-7qK"/>
+                                    <constraint firstAttribute="centerX" secondItem="b7o-sl-jJt" secondAttribute="centerX" id="1j3-8u-p9F"/>
+                                    <constraint firstAttribute="bottom" secondItem="kWy-SU-zsI" secondAttribute="bottom" constant="15" id="2i7-uH-GoQ"/>
+                                    <constraint firstAttribute="centerY" secondItem="b7o-sl-jJt" secondAttribute="centerY" id="I0e-vU-vnM"/>
+                                    <constraint firstItem="kg5-X2-z9w" firstAttribute="top" secondItem="GbP-eH-bte" secondAttribute="top" constant="15" id="fhf-r5-ZNH"/>
+                                    <constraint firstAttribute="centerX" secondItem="kWy-SU-zsI" secondAttribute="centerX" id="p1s-0V-VZ8"/>
+                                    <constraint firstAttribute="width" constant="125" id="qfi-OL-SFb"/>
+                                    <constraint firstAttribute="height" constant="125" id="ra0-s2-HNR"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="loz-J9-x6w" appends="YES" id="v4b-kz-1tV"/>
+                                </connections>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.53333333329999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Jls-5T-ncd" secondAttribute="bottom" id="0dF-qA-pfe"/>
+                            <constraint firstAttribute="trailing" secondItem="GbP-eH-bte" secondAttribute="trailing" constant="10" id="9fr-Ol-U5s"/>
                             <constraint firstItem="5In-Jo-1gT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="BD6-ae-vHa"/>
+                            <constraint firstItem="R4f-QU-z8D" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="J4n-y3-Exe"/>
                             <constraint firstAttribute="trailing" secondItem="5In-Jo-1gT" secondAttribute="trailing" constant="10" id="mm7-oH-0Fq"/>
+                            <constraint firstItem="Jls-5T-ncd" firstAttribute="top" secondItem="GbP-eH-bte" secondAttribute="bottom" constant="40" id="tK1-be-3WZ"/>
                             <constraint firstAttribute="trailing" secondItem="Jls-5T-ncd" secondAttribute="trailing" id="uaV-RK-wIu"/>
                             <constraint firstItem="5In-Jo-1gT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="xEb-hu-V4o"/>
                             <constraint firstItem="Jls-5T-ncd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="xjr-Eq-o64"/>
+                            <constraint firstItem="Jls-5T-ncd" firstAttribute="top" secondItem="R4f-QU-z8D" secondAttribute="bottom" constant="40" id="yX1-k7-vcf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lblDeckCardsLeft" destination="asb-V9-o2a" id="rAf-iT-Mrc"/>
                         <outlet property="lblInstructions" destination="5In-Jo-1gT" id="rer-FM-NLg"/>
+                        <outlet property="lblStackCard" destination="b7o-sl-jJt" id="sWk-QM-OM9"/>
+                        <outlet property="lblStackCardsLeft" destination="kWy-SU-zsI" id="crp-Ek-Qa6"/>
+                        <outlet property="tableView" destination="Jls-5T-ncd" id="NVv-jm-dXf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cFI-D1-CPO">
+                    <connections>
+                        <action selector="deckTapped:" destination="vXZ-lx-hvc" id="nrU-hX-Dx8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="loz-J9-x6w">
+                    <connections>
+                        <action selector="stackTapped:" destination="vXZ-lx-hvc" id="0Ev-FJ-v5k"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162" y="128"/>
         </scene>

@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-//@class Card;
-//@class Player;
+@class Card;
+@class Player;
 
 @interface Game : NSObject
 
@@ -20,7 +20,13 @@
 - (instancetype)initWithStubPlayer;
 - (instancetype)initWithPlayers:(NSArray *)players;
 
+- (Card *)topStackCard;
+
 - (void)dealGame;
+- (void)drawCardForPlayer:(Player *)player;
+- (void)playCard:(Card *)card forPlayer:(Player *)player;
+- (void)pickUpStackForPlayer:(Player *)player;
+
 - (void)debug_putThreeCardsFaceDown;
 
 @end

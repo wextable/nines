@@ -22,7 +22,8 @@ typedef NS_ENUM(NSInteger, SuitType) {
 @property (nonatomic, strong) NSString *name;       // King
 @property (nonatomic, strong) NSString *fullName;   // King of Hearts
 @property (nonatomic, assign) NSInteger faceValue;  // 2=2, 3=3, 10=10, J=11, A=14
-@property (nonatomic, assign) NSInteger value;      // 2=14, 3=3, 10=14, J=11, A=14
+@property (nonatomic, assign) NSInteger playValue;      // 2=14, 3=3, 10=14, J=11, A=14
+@property (nonatomic, assign) NSInteger playOnValue;    // 2=2, 3=3, 10=14, J=11, A=14
 
 - (instancetype)initWithFaceValue:(NSInteger)faceValue suit:(SuitType)suit;
 
